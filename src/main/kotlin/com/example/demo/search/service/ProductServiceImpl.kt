@@ -3,6 +3,7 @@ package com.example.demo.search.service
 import com.example.demo.search.dto.request.SearchProductRequest
 import com.example.demo.search.dto.response.RankSearchProductResponse
 import com.example.demo.search.dto.response.SearchResponse
+import com.example.demo.search.model.Product
 import com.example.demo.search.repository.ProductRepository
 import com.example.demo.search.repository.SearchWordRepository
 import org.springframework.cache.annotation.Cacheable
@@ -16,7 +17,14 @@ class ProductServiceImpl(
     private val searchWordRepository: SearchWordRepository
 ): ProductService {
     override fun createProduct(request: SearchProductRequest) {
-        TODO("Not yet implemented")
+        val product = productRepository.save(
+            Product(
+                name = request.name,
+                content = request.content,
+                price = request.price.toString()
+            )
+        )
+
     }
 
     @Cacheable(value = ["name"], key = "#searchWord", cacheManager = "redisCacheManager")

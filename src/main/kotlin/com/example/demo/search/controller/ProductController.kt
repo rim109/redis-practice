@@ -31,7 +31,7 @@ class ProductController(
     ): ResponseEntity<Page<SearchResponse>> {
         return ResponseEntity.status(HttpStatus.OK).body(productService.searchProductList(searchWord, pageable))
     }
-    @GetMapping("/search/}")
+    @GetMapping("/search/rank")
     fun searchRankProductList(): ResponseEntity<List<RankSearchProductResponse>>{
         return ResponseEntity.status(HttpStatus.OK).body(productService.searchRankProductList())
     }
