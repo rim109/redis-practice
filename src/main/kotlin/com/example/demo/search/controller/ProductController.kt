@@ -27,7 +27,7 @@ class ProductController(
     @GetMapping("/search")
     fun searchProductList(
         @RequestParam("searchWord") searchWord: String,
-        @PageableDefault(size = 10, sort = ["id"]) pageable: Pageable,
+        @PageableDefault(page = 0, size = 10, sort = ["name"]) pageable: Pageable,
     ): ResponseEntity<Page<SearchResponse>> {
         return ResponseEntity.status(HttpStatus.OK).body(productService.searchProductList(searchWord, pageable))
     }
