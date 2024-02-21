@@ -6,6 +6,8 @@ plugins {
 	kotlin("jvm") version "1.9.22"
 	kotlin("plugin.spring") version "1.9.22"
 	kotlin("plugin.jpa") version "1.9.22"
+	kotlin("kapt") version "1.9.21"
+	kotlin("plugin.serialization") version "1.9.21"
 }
 
 group = "com.example"
@@ -26,8 +28,16 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	implementation ("io.lettuce:lettuce-core:6.1.5.RELEASE")
 
-	runtimeOnly("org.postgresql:postgresql")
+	implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+	kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	annotationProcessor ("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	annotationProcessor ("jakarta.annotation:jakarta.annotation-api")
+	annotationProcessor ("jakarta.persistence:jakarta.persistence-api")
+
+//	runtimeOnly("org.postgresql:postgresql")
+	implementation("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 }
