@@ -8,6 +8,7 @@ import com.example.demo.search.repository.ProductRepository
 import com.example.demo.search.repository.SearchWordRepository
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
@@ -28,7 +29,8 @@ class ProductServiceImpl(
     }
 
     @Cacheable(value = ["name"], key = "#searchWord", cacheManager = "redisCacheManager")
-    override fun searchProductList(searchWord: String, pageable: Pageable): Page<SearchResponse> {
+    override fun searchProductList(searchWord: String): Page<SearchResponse> {
+        val pageable = PageRequest.of(5,3)
         return searchWordRepository.getSearchProductBySearchWord(searchWord, pageable)
     }
 

@@ -1,32 +1,36 @@
-jpa:
-  properties:
-    hibernate:
-      show_sql: true
-      format_sql: true
-      highlight_sql: true
-data:
-  redis:
-    host: ${spring.redis.host}
-    port: ${spring.redis.port}
-
-springdoc:
-  swagger-ui:
-    operations-sorter: method
-
-logging:
-  level:
-    org:
+spring:
+  jpa:
+      open-in-view: true
       hibernate:
-        sql: debug
-        orm:
-          jdbc:
-            bind: trace
+        ddl-auto: none
+      properties:
+        show_sql: true
+        format_sql: true
+        highlight_sql: true
+  data:
+    redis:
+      host: ${spring.redis.host}
+      port: ${spring.redis.port}
+      url: redis://217.0.0.1:6379
 
-      springframework:
-        security: debug
-        jdbc:
-          core:
-            JdbcTemplate: debug
+  springdoc:
+    swagger-ui:
+      operations-sorter: method
+
+  logging:
+    level:
+      org:
+        hibernate:
+          sql: debug
+          orm:
+            jdbc:
+              bind: trace
+
+        springframework:
+          security: debug
+          jdbc:
+            core:
+              JdbcTemplate: debug
 
 server:
   port: 8080

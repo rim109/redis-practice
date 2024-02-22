@@ -29,7 +29,7 @@ class ProductController(
         @RequestParam("searchWord") searchWord: String,
         @PageableDefault(page = 0, size = 10, sort = ["name"]) pageable: Pageable,
     ): ResponseEntity<Page<SearchResponse>> {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.searchProductList(searchWord, pageable))
+        return ResponseEntity.status(HttpStatus.OK).body(productService.searchProductList(searchWord))
     }
     @GetMapping("/search/rank")
     fun searchRankProductList(): ResponseEntity<List<RankSearchProductResponse>>{

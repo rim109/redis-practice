@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable
 interface ProductService {
     fun createProduct(request: SearchProductRequest)
 
-    fun searchProductList(searchWord: String, pageable: Pageable): Page<SearchResponse>
+    fun searchProductList(searchWord: String): Page<SearchResponse>
 
     fun searchRankProductList(): List<RankSearchProductResponse>
 }
