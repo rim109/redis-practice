@@ -29,11 +29,14 @@ class RedisConfig(
 
     @Bean
     fun redisTemplate(redisConnectionFactory: RedisConnectionFactory): RedisTemplate<String, String> {
-        val redisTemplate = RedisTemplate<String, String>()
-        redisTemplate.connectionFactory = redisConnectionFactory
-        redisTemplate.keySerializer = StringRedisSerializer()
-        redisTemplate.valueSerializer = StringRedisSerializer()
-        return redisTemplate
+        val template = RedisTemplate<String, String>()
+        template.connectionFactory = redisConnectionFactory
+        template.keySerializer = StringRedisSerializer()
+        template.valueSerializer = StringRedisSerializer()
+
+        template.hashKeySerializer = StringRedisSerializer()
+        template.hashValueSerializer = StringRedisSerializer()
+        return template
     }
 
     @Bean

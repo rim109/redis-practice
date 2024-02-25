@@ -11,20 +11,19 @@ spring:
     redis:
       host: ${spring.redis.host}
       port: ${spring.redis.port}
-      url: redis://217.0.0.1:6379
 
   springdoc:
     swagger-ui:
       operations-sorter: method
 
-  logging:
-    level:
-      org:
-        hibernate:
-          sql: debug
-          orm:
-            jdbc:
-              bind: trace
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        orm:
+          jdbc:
+            bind: trace
 
         springframework:
           security: debug

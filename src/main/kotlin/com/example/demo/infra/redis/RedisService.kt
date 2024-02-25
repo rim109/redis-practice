@@ -11,15 +11,9 @@ import org.springframework.stereotype.Service
 class RedisService(
     private val redisTemplate: RedisTemplate<String,String>
 ) {
-    private val objectMapper = setObjectMapper()
+    fun test(){
+        val tmp = redisTemplate.opsForValue()
 
-    private fun setObjectMapper(): ObjectMapper {
-        return ObjectMapper()
-            .registerKotlinModule()
-            .registerModule(JavaTimeModule())
-            .activateDefaultTyping(
-                BasicPolymorphicTypeValidator.builder()
-                    .allowIfBaseType(Any::class.java).build(),
-                ObjectMapper.DefaultTyping.EVERYTHING)
+        tmp.append("test", "확인용")
     }
 }
